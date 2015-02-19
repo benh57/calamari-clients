@@ -1,7 +1,9 @@
+{% import 'setvars' as vars with context %}
 full_build_deps:
   pkg.installed:
     - pkgs:
       - ruby1.9.1
+      - ruby1.9.1-dev
       - python-software-properties
       - g++
       - make
@@ -42,5 +44,5 @@ compass:
 
 fix_mode:
     cmd.run:
-        - name: chown -R vagrant:vagrant /home/vagrant
+        - name: chown -R {{vars.username}}:{{vars.username}} {{vars.home}}
         - user: root

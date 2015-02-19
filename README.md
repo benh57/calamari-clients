@@ -50,7 +50,7 @@ How to Build Clients
 4. Ruby gem and `compass` via `gem`
 5. make sure your system has a recent gnu compatible `make` binary
 4. checkout the code `git clone git@github.com:ceph/calamari-clients.git`
-5. cd into `clients`
+5. cd into `calamari-clients`
 6. to build: `make dist`
 
 This will build all the modules.
@@ -122,3 +122,14 @@ The Manage application is the first module which actively tries to change the st
  * **Simple Log Viewing**
 
 **This app owns all the content underneath the /manage URL prefix.**
+
+
+Build notes
+-----------
+
+Since build output is really distro-independent, the build is structured to
+build only on one distro (Ubuntu Precise, by default) in the Vagrant setups
+under vagrant/.  Build first with vagrant/precise-build, and the resultant
+sources are placed into a tarball "calamari-clients-build-output.tar.gz";
+then that tarball is used to feed the rest of the distro builds, which
+are really just repackaging.
